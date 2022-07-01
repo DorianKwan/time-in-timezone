@@ -3,13 +3,12 @@ export interface Theme {
 }
 
 export const colors = {
-  ash: '#3f4c6b',
-  pink: '#f8cdda',
+  ash: '#6F7B83',
+  blue: '#53DDFF',
   red: '#fe6666',
   darkRed: '#ff3e3e',
   green: '#51fa14',
   darkGreen: '#4fed15',
-  purple: '#8f94fb',
 };
 
 const theme: Theme = {

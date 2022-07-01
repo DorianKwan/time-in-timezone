@@ -9,7 +9,7 @@ import {
   Link,
 } from 'react-router-dom';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { useTypedTheme } from 'src/hooks';
 import { Home } from '../pages/Home';
 import AppLogo from '../../assets/images/logo.png';
@@ -19,7 +19,7 @@ const routes = [
     path: '/',
     exact: true,
     main: () => <Home />,
-    icon: faHome,
+    icon: faClock,
   },
 ];
 
@@ -44,7 +44,7 @@ const Sidebar = () => {
               <NavItem
                 key={path}
                 active={currentRoute === path}
-                hoverColor={theme.colors.red}>
+                hoverColor={theme.colors.blue}>
                 <Link to={path}>
                   <Icon icon={icon} />
                 </Link>
@@ -110,7 +110,7 @@ const NavItem = styled.li<{ active?: boolean; hoverColor: string }>`
     position: absolute;
     left: 7.5%;
     bottom: 0;
-    width: 85%
+    width: 85%;
     border: 1px solid rgba(255, 255, 255, 0.4);
   }
 
