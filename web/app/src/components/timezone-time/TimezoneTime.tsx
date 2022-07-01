@@ -4,6 +4,7 @@ import sweetAlert from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { coreServiceApi } from 'src/api';
 import { useAsyncEffect, useTypedTheme } from 'src/hooks';
+import { ApiData } from 'time-in-timezone-shared';
 import { AnimatedText, FadeIn, Loader } from '../utility';
 
 const ANIMATED_TEXT_DURATION = 0.05;
@@ -12,7 +13,11 @@ const FADE_IN_DURATION = 1.75;
 const DEFAULT_DATETIME_STRING = '1970-01-01T00:00:00.000Z';
 const DEFAULT_SELECTED_DATETIME = 'When it all began..';
 
-export const TimezoneTime: React.VFC = () => {
+interface TimezoneTimeProps {
+  timezoneOptions: ApiData.TimezoneOptions;
+}
+
+export const TimezoneTime: React.VFC<TimezoneTimeProps> = () => {
   const theme = useTypedTheme();
 
   const [datetimeString, setDatetimeString] = useState(DEFAULT_DATETIME_STRING);

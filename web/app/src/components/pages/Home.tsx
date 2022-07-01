@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { useAsyncEffect } from 'src/hooks';
 import { coreServiceApi } from 'src/api';
 import { ApiData } from 'time-in-timezone-shared';
-import { PageWrapper } from '../utility';
+import { Loader, PageWrapper } from '../utility';
 import { TimezoneTime } from '../timezone-time';
 
 export const Home = () => {
@@ -17,9 +17,13 @@ export const Home = () => {
     setTimezoneOptions(availableTimezoneOptions);
   }, []);
 
+  if (!timezoneOptions) {
+    return <Loader />;
+  }
+
   return (
     <HomePageWrapper>
-      <TimezoneTime />
+      <TimezoneTime timezoneOptions={timezoneOptions} />
     </HomePageWrapper>
   );
 };
