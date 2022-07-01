@@ -19,5 +19,5 @@
     "services/core-service",
     "web/app"
   ],
-  "cSpell.words": ["bodyparser", "datetime", "lcdev", "unixtime"]
+  "cSpell.words": ["bodyparser", "datetime", "lcdev", "sweetalert", "unixtime"]
 }
