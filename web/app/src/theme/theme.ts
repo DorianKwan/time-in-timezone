@@ -3,7 +3,7 @@ export interface Theme {
 }
 
 export const colors = {
-  ash: '#6F7B83',
+  ash: '#949ea6',
   blue: '#53DDFF',
   red: '#fe6666',
   darkRed: '#ff3e3e',
