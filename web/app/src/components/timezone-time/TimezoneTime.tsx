@@ -4,11 +4,10 @@ import sweetAlert from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useTimezoneTimeSearch } from 'src/hooks';
 import { ApiData } from 'time-in-timezone-shared';
-import { AnimatedText, FadeIn, Loader, InputDropdownSelect } from '../utility';
+import { formatInTimeZone } from 'date-fns-tz';
+import { AnimatedText, Loader, InputDropdownSelect } from '../utility';
 
-const ANIMATED_TEXT_DURATION = 0.05;
-const FADE_IN_DELAY = 0.4;
-const FADE_IN_DURATION = 1.75;
+const ANIMATED_TEXT_DURATION = 0.025;
 
 interface TimezoneTimeProps {
   timezoneOptions: ApiData.TimezoneOptions;
@@ -39,36 +38,23 @@ export const TimezoneTime: React.VFC<TimezoneTimeProps> = ({
     return <Loader />;
   }
 
+  const readableDatetime = formatInTimeZone(
+    datetimeString,
+    selectedTimezone,
+    'MMM do yyyy, h:mm:ssaa',
+  );
+
   return (
     <Container>
-      <TimezoneHeading>
-        <AnimatedText
-          capitalize
-          duration={ANIMATED_TEXT_DURATION}
-          content="Time in Timezone"
-        />
-      </TimezoneHeading>
-      <TimezoneInfo>
-        <AnimatedText
-          duration={ANIMATED_TEXT_DURATION}
-          content={selectedTimezone}
-        />
-      </TimezoneInfo>
-      <TimezoneInfo>
-        <AnimatedText
-          capitalize
-          duration={ANIMATED_TEXT_DURATION}
-          content={datetimeString}
-        />
-      </TimezoneInfo>
-      <FadeIn delay={FADE_IN_DELAY} duration={FADE_IN_DURATION}>
-        <InputDropdownSelect
-          options={timezoneOptions}
-          onSearch={onSearch}
-          inputError={inputError}
-          setInputError={setInputError}
-        />
-      </FadeIn>
+      <TimezoneHeading>Time in Timezone</TimezoneHeading>
+      <TimezoneInfo>{selectedTimezone}</TimezoneInfo>
+      <TimezoneInfo>{readableDatetime}</TimezoneInfo>
+      <InputDropdownSelect
+        options={timezoneOptions}
+        onSearch={onSearch}
+        inputError={inputError}
+        setInputError={setInputError}
+      />
     </Container>
   );
 };
