@@ -105,7 +105,7 @@ export const TimezoneTime: React.VFC<TimezoneTimeProps> = ({
           options={timezoneOptions}
           onSearch={onSearch}
           inputError={inputError}
-          onInputError={setInputError}
+          setInputError={setInputError}
         />
       </FadeIn>
     </Container>

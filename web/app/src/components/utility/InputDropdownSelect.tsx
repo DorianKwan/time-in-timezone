@@ -7,7 +7,7 @@ interface InputDropdownSelectProps {
   options: string[];
   onSearch: (inputVal: string) => void;
   inputError: boolean;
-  onInputError: React.Dispatch<React.SetStateAction<boolean>>;
+  setInputError: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 type FuseResults = Fuse.FuseResult<string>[];
@@ -18,7 +18,7 @@ export const InputDropdownSelect: React.VFC<InputDropdownSelectProps> = ({
   options,
   onSearch,
   inputError,
-  onInputError,
+  setInputError,
 }) => {
   const theme = useTypedTheme();
 
@@ -35,7 +35,14 @@ export const InputDropdownSelect: React.VFC<InputDropdownSelectProps> = ({
     [],
   );
 
-  const onTimezoneSearch = () => onSearch(inputVal);
+  const onTimezoneSearch = () => {
+    if (options.includes(inputVal)) {
+      onSearch(inputVal);
+      return;
+    }
+
+    setInputError(true);
+  };
 
   const isDropdownOptionVisible =
     isInputFocused && searchedOptions.length > 0 && selectedOption !== inputVal;
@@ -54,7 +61,10 @@ export const InputDropdownSelect: React.VFC<InputDropdownSelectProps> = ({
       <InputWrapper>
         <Input
           placeholder="Timezone.."
-          onChange={event => setInputVal(event.currentTarget.value)}
+          onChange={event => {
+            setInputError(false);
+            setInputVal(event.currentTarget.value);
+          }}
           onKeyPress={event => {
             if (event.key === 'Enter') {
               onTimezoneSearch();
@@ -74,6 +84,7 @@ export const InputDropdownSelect: React.VFC<InputDropdownSelectProps> = ({
                 key={timezone}
                 type="button"
                 onClick={() => {
+                  setInputError(false);
                   setInputVal(timezone);
                   setSelectedOption(timezone);
                 }}>
