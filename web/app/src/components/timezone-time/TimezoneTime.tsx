@@ -5,9 +5,7 @@ import withReactContent from 'sweetalert2-react-content';
 import { useTimezoneTimeSearch } from 'src/hooks';
 import { ApiData } from 'time-in-timezone-shared';
 import { formatInTimeZone } from 'date-fns-tz';
-import { AnimatedText, Loader, InputDropdownSelect } from '../utility';
-
-const ANIMATED_TEXT_DURATION = 0.025;
+import { Loader, InputDropdownSelect } from '../utility';
 
 interface TimezoneTimeProps {
   timezoneOptions: ApiData.TimezoneOptions;
