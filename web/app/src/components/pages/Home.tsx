@@ -4,6 +4,7 @@ import { useAsyncEffect } from 'src/hooks';
 import { coreServiceApi } from 'src/api';
 import { ApiData } from 'time-in-timezone-shared';
 import { PageWrapper } from '../utility';
+import { TimezoneTime } from '../timezone-time';
 
 export const Home = () => {
   const [timezoneOptions, setTimezoneOptions] =
@@ -18,7 +19,7 @@ export const Home = () => {
 
   return (
     <HomePageWrapper>
-      <HomeHeading>Home</HomeHeading>
+      <TimezoneTime />
     </HomePageWrapper>
   );
 };
@@ -26,8 +27,4 @@ export const Home = () => {
 const HomePageWrapper = styled(PageWrapper)`
   display: grid;
   place-items: center;
-`;
-
-const HomeHeading = styled.h1`
-  text-align: center;
 `;
