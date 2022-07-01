@@ -25,5 +25,5 @@ export type TimezoneListResponse = string[];
 export const isErrorResponse = (
   response: TimezoneError | TimezoneResponse,
 ): response is TimezoneError => {
-  return !(response as TimezoneError).error;
+  return !!(response as TimezoneError).error;
 };
