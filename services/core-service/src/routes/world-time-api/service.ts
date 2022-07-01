@@ -27,7 +27,7 @@ export default class WorldTimeApiService {
 
     const { datetime } = timezoneInfo;
 
-    return { datetime, timezone };
+    return { datetime };
   }
 }
 
