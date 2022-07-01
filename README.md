@@ -1,4 +1,6 @@
 # Getting Started
+![timezone-time](https://user-images.githubusercontent.com/26664788/176852751-cdc2d639-3cc7-439f-8b4a-98a9b2e6fdfd.gif)
+
 
 First ensure you're on node version **v16.15.1**. `.nvmrc` will enforce this version.  
 Recommended node version managers: **[n](https://github.com/tj/n)** or **[nvm](https://github.com/nvm-sh/nvm)**
