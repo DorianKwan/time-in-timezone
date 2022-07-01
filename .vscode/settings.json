@@ -18,5 +18,6 @@
     "lib/shared",
     "services/core-service",
     "web/app"
-  ]
+  ],
+  "cSpell.words": ["bodyparser", "datetime", "lcdev", "unixtime"]
 }
