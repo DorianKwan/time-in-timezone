@@ -1,5 +1,3 @@
-// eslint & prettier were fighting over formatting; will fix later
-/* eslint-disable @typescript-eslint/indent */
 import axios from 'axios';
 import {
   TimezoneError,
@@ -13,17 +11,19 @@ export default class WorldTimeApiRepo {
   ) {}
 
   async fetchAvailableTimezones() {
-    const { data: availableTimezoneList } = await axios.get<
-      TimezoneListResponse[]
-    >(this.baseWorldTimeApiUrl);
+    type Response = TimezoneListResponse[];
+    const { data: availableTimezoneList } = await axios.get<Response>(
+      this.baseWorldTimeApiUrl,
+    );
 
     return availableTimezoneList;
   }
 
   async fetchTimeInfoFromTimezone(timezone: string) {
-    const { data: timezoneInfo } = await axios.get<
-      TimezoneResponse | TimezoneError
-    >(`${this.baseWorldTimeApiUrl}/${timezone}`);
+    type Response = TimezoneResponse | TimezoneError;
+    const { data: timezoneInfo } = await axios.get<Response>(
+      `${this.baseWorldTimeApiUrl}/${timezone}`,
+    );
 
     return timezoneInfo;
   }
