@@ -155,10 +155,6 @@ const OptionsContainer = styled.div<{ isVisible: boolean }>`
     border: 1px solid #d9d9d9;
   }
 
-  ::-webkit-scrollbar-track-piece {
-    height: 98%;
-  }
-
   ::-webkit-scrollbar-thumb {
     border-radius: 25px;
     background: #d9d9d9;
